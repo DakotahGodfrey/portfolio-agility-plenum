@@ -34,13 +34,16 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		console.log("Folder", process.cwd())
 
-		const listing = readdirSync(`${process.cwd()}/src`)
+		if (existsSync(`${process.cwd()}/src`)) {
+			//check for a src folder...
+			const listing = readdirSync(`${process.cwd()}/src`)
 
-		//listing all files using forEach
-		listing.forEach(function (path) {
-			// Do whatever you want to do with the file
-			console.log({path});
-		});
+			//listing all files using forEach
+			listing.forEach(function (path) {
+				// Do whatever you want to do with the file
+				console.log({path});
+			});
+		}
 
 
 		//determine if we've already done a full build yet
