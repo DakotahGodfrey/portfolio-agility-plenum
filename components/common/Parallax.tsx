@@ -25,11 +25,8 @@ const Parallax = ({ children, offset = 50, clampInitial, clampFinal }: ParallaxP
 	const yRange = useTransform(scrollY, [initial, final], [clampInitial ? 0 : offset, clampFinal ? 0 : -offset])
 	const y = useSpring(yRange, { stiffness: 400, damping: 90 })
 
-	console.log("Process", process.browser)
 
-	let onClient = process.browser;
-
-	if (onClient) {
+	if (process.browser) {
 		useLayoutEffect(() => {
 			const element = ref.current
 			const onResize = () => {
