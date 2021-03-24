@@ -24,7 +24,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		console.log(1, {params})
 
-		if (! params) {
+		if (params === undefined || params === null) {
 			params = {
 				slug: [""]
 			}
@@ -32,13 +32,6 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			console.log(2, {params})
 
 		}
-
- 		if (! params.slug) {
- 			params.slug = [""]
-
-			 console.log(3, {params})
- 		}
-
 
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
@@ -55,11 +48,14 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			revalidate: rebuildFrequency
 		}
 	} catch (err) {
+		var e = new Error();
+    	const st = e.stack;
+
 		console.log("Error getting page props", params, err)
 
 		return {
 			props: {
-				error: `Params: ${params}, Error: ${err}`,
+				error: `Params: ${params}, Error: ${err}, Stack: ${err}`,
 				revalidate: 1000
 			}
 		}
