@@ -22,11 +22,13 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			"footer": GlobalFooter
 		}
 
-		if (params === undefined) {
-			params = null
-		}
+		if (params === undefined) params = null
+		if (preview === undefined) preview = false
+		if (locale === undefined) locale = null
+		if (defaultLocale === undefined) defaultLocale = null
+		if (defaultLocale === undefined) defaultLocale = null
 
-		console.log("pre", { preview, params, locale, defaultLocale, locales })
+		console.log("pre", { preview, params, locale, defaultLocale })
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 
