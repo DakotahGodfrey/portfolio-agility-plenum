@@ -26,7 +26,11 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			params = null
 		}
 
+		console.log("pre", { preview, params, locale, defaultLocale, locales })
+
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+
+		console.log("post", agilityProps)
 
 		let rebuildFrequency = 10
 
