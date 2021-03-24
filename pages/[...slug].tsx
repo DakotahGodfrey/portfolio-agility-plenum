@@ -37,6 +37,10 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/.next/cache/agility/build.log`
 
+		if (existsSync(`${process.cwd()}/.next/cache/agility/3440d72f/live/en-us/sitemap/website.json`)) {
+			console.log("THE sitemap is here")
+		}
+
 		if (existsSync(buildFilePath)) {
 			console.log("REMOVING BUILD FILE PATH")
 			unlinkSync(buildFilePath)
