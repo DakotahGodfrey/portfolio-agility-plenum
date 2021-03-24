@@ -34,7 +34,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		console.log("Folder", process.cwd())
 
-		const listing = readdirSync(process.cwd())
+		const listing = readdirSync(`${process.cwd()}/src`)
 
 		//listing all files using forEach
 		listing.forEach(function (path) {
@@ -44,14 +44,14 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 
 		//determine if we've already done a full build yet
-		const buildFilePath = `${process.cwd()}/.next/cache/agility/build.log`
+		const buildFilePath = `${process.cwd()}/src/.next/cache/agility/build.log`
 
-		if (existsSync(`${process.cwd()}/.next`)) {
-			console.log("The next cache is here", `${process.cwd()}/.next`)
+		if (existsSync(`${process.cwd()}/src/.next`)) {
+			console.log("The next cache is here", `${process.cwd()}/src/.next`)
 		}
 
-		if (existsSync(`./.next`)) {
-			console.log("The next cache is here (2)", `./.next`)
+		if (existsSync(`./src/.next`)) {
+			console.log("The next cache is here (2)", `./src/.next`)
 		}
 
 		if (existsSync(buildFilePath)) {
