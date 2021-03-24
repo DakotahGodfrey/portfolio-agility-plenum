@@ -37,8 +37,12 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/.next/cache/agility/build.log`
 
-		if (existsSync(`${process.cwd()}/.next/cache/agility/3440d72f/live/en-us/sitemap/website.json`)) {
-			console.log("THE sitemap is here")
+		if (existsSync(`${process.cwd()}/.next`)) {
+			console.log("The next cache is here", `${process.cwd()}/.next`)
+		}
+
+		if (existsSync(`./.next`)) {
+			console.log("The next cache is here (2)", `./.next`)
 		}
 
 		if (existsSync(buildFilePath)) {
