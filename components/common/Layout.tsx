@@ -15,7 +15,11 @@ import Error from 'next/error'
 
 function Layout(props) {
 
-	const { page, sitemapNode, dynamicPageItem, notFound, pageTemplateName } = props
+	const { page, sitemapNode, dynamicPageItem, notFound, pageTemplateName, error } = props
+
+	if (error) {
+		return <div>{error}</div>
+	}
 
 	// If the page is not yet generated, this will be displayed
 	// initially until getStaticProps() finishes running

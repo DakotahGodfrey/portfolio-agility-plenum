@@ -40,7 +40,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		return {
 			props: {
-				notFound: true,
+				error: `${err}`,
 				revalidate: 1000
 			}
 		}
@@ -62,6 +62,8 @@ const AgilityPage = (props: any) => {
 	if (handlePreview()) {
 		return <LoadingWidget message="Activating preview mode..." />
 	}
+
+
 
 	return <Layout {...props} />;
 }
