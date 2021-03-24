@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 
+
 import Error from 'next/error'
 
 
@@ -39,6 +40,7 @@ function Layout(props) {
 	return (
 		<>
 			<Head>
+				<html lang={"en-us"}/>
 				<title>{sitemapNode?.title} - Agility CMS Sample Blog</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content={page.seo.metaDescription} />
@@ -49,13 +51,14 @@ function Layout(props) {
 				}
 
 			</Head>
-			<PreviewBar {...props} />
 
-			<main>
-				<GlobalHeader {...props} />
-				<AgilityPageTemplate {...props} />
-				<GlobalFooter {...props} />
-			</main>
+				<PreviewBar {...props} />
+
+				<main>
+					<GlobalHeader {...props} />
+					<AgilityPageTemplate {...props} />
+					<GlobalFooter {...props} />
+				</main>
 
 		</>
 	)
