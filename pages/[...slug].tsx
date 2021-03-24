@@ -14,7 +14,7 @@ import GlobalHeader from "components/common/GlobalHeader"
 import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
 
-import { unlinkSync, existsSync } from "fs"
+import { unlinkSync, existsSync, readdirSync } from "fs"
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
@@ -33,6 +33,15 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		//hack delete the incremental
 
 		console.log("Folder", process.cwd())
+
+		const listing = readdirSync(process.cwd())
+
+		//listing all files using forEach
+		listing.forEach(function (path) {
+			// Do whatever you want to do with the file
+			console.log({path});
+		});
+
 
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/.next/cache/agility/build.log`
