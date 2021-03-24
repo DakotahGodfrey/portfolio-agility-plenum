@@ -32,7 +32,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 	return {
 		props: agilityProps,
-		revalidate: rebuildFrequency
+		//HACK revalidate: rebuildFrequency
 	}
 }
 
@@ -43,7 +43,7 @@ export async function getStaticPaths({ locales, defaultLocale }: GetStaticPathsC
 
 	return {
 		paths: agilityPaths,
-		fallback: true,
+		fallback: false, //HACK
 	}
 }
 
