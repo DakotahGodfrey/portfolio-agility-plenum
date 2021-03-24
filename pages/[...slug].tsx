@@ -32,9 +32,11 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		//hack delete the incremental
 
+		console.log("Folder", process.cwd())
 
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/.next/cache/agility/build.log`
+
 		if (existsSync(buildFilePath)) {
 			console.log("REMOVING BUILD FILE PATH")
 			unlinkSync(buildFilePath)
