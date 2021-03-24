@@ -13,6 +13,7 @@ import { getModule } from "components/agility-modules"
 import GlobalHeader from "components/common/GlobalHeader"
 import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
+import { RSA_PSS_SALTLEN_MAX_SIGN } from 'node:constants'
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
@@ -20,6 +21,10 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		const globalComponents = {
 			"header": GlobalHeader,
 			"footer": GlobalFooter
+		}
+
+		if (! params.slug) {
+			params.slug = ["/"]
 		}
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
@@ -40,7 +45,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		return {
 			props: {
-				error: `${err}`,
+				error: `Params: ${params}, Error: ${err}`,
 				revalidate: 1000
 			}
 		}
