@@ -30,7 +30,7 @@ interface CustomData {
 const PostListing: ModuleWithInit<IPostListing, CustomData> = ({ module, customData }) => {
 	const fields = module.fields
 	let href = "/pages/[...slug]"
-console.log(customData.posts)
+
 	return (
 		<section className="my-12 bg-white">
 			<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
