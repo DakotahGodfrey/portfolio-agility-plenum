@@ -55,7 +55,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		return {
 			props: {
-				error: `Params: ${params}, Error: ${err}, Stack: ${err}`,
+				error: `Params: ${params}, Error: ${err}, Stack: ${st}`,
 				revalidate: 1000
 			}
 		}
