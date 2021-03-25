@@ -57,6 +57,8 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			"footer": GlobalFooter
 		}
 
+
+
 		if (params === undefined) params = null
 		if (preview === undefined) preview = false
 		if (locale === undefined) locale = null
