@@ -1,7 +1,7 @@
 module.exports = {
 	target: "serverless",
 	functions: {
-		'pages/[...slug].tsx': {
+		'pages/[...slug].jsx': {
 			includeDirs: ['./cache']
 		}
 	}
