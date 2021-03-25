@@ -15,30 +15,35 @@ import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
 
 import { unlinkSync, existsSync, readdirSync } from "fs"
+import path from "path"
 
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
 
-	const traverse = (path, depth) => {
+	const traverse = (rootPath, depth) => {
 
 		if (depth > 3) return
 
-		try {
-			const listing = readdirSync(path, { withFileTypes: true })
+		if (!existsSync(rootPath)) {
+			console.log(`${rootPath} does not exist`)
+			return
+		}
 
+		try {
+			const listing = readdirSync(rootPath, { withFileTypes: true })
 
 			let indent = " "
 			for (let i = 0; i < depth; i++) indent += " "
 
 			//listing all files using forEach
-			listing.forEach(path => {
+			listing.forEach(sub => {
 
-				if (path.isDirectory()) {
-					console.log(`${indent} * ${path.name}`);
-					traverse(path.name, depth + 1)
+				if (sub.isDirectory()) {
+					console.log(`${indent} * ${sub.name}`);
+					traverse(path.resolve(rootPath, sub.name), depth + 1)
 				} else {
-					console.log(`${indent} - ${path.name}`);
+					console.log(`${indent} - ${sub.name}`);
 				}
 			})
 		} catch (e) {
@@ -58,7 +63,9 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		traverse(process.cwd(), 0)
+const root = path.resolve(process.cwd(), ".next/cache/agility")
+
+		traverse(root, 0)
 
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/src/.next/cache/agility/build.log`
