@@ -63,7 +63,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		const root = path.resolve(process.cwd(), "cache")
+		const root = "./cache"
 
 		traverse(root, 0)
 
