@@ -14,10 +14,37 @@ import GlobalHeader from "components/common/GlobalHeader"
 import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
 
-import fs from "fs"
 import { unlinkSync, existsSync, readdirSync } from "fs"
 
+
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
+
+
+	const traverse = (path, depth) => {
+
+		if (depth > 3) return
+
+		try {
+			const listing = readdirSync(path, { withFileTypes: true })
+
+
+			let indent = " "
+			for (let i = 0; i < depth; i++) indent += " "
+
+			//listing all files using forEach
+			listing.forEach(path => {
+
+				if (path.isDirectory()) {
+					console.log(`${indent} * ${path.name}`);
+					traverse(path.name, depth + 1)
+				} else {
+					console.log(`${indent} - ${path.name}`);
+				}
+			})
+		} catch (e) {
+			return
+		}
+	}
 
 	try {
 		const globalComponents = {
@@ -31,29 +58,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		//hack delete the incremental
-
-		console.log("Folder", process.cwd())
-
-		if (existsSync(`${process.cwd()}`)) {
-			//check for a src folder...
-			const listing = readdirSync(`${process.cwd()}`, { withFileTypes: true})
-
-			//listing all files using forEach
-			listing.forEach(function (path) {
-				// Do whatever you want to do with the file
-
-				console.log(`* ${path.name}`);
-
-				if (path.isDirectory()) {
-					const listing2 = readdirSync(path.name)
-					listing2.forEach(path2 => {
-						console.log(`  - ${path2}`);
-					})
-				}
-			});
-		}
-
+		traverse(process.cwd(), 0)
 
 		//determine if we've already done a full build yet
 		const buildFilePath = `${process.cwd()}/src/.next/cache/agility/build.log`
@@ -86,7 +91,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		}
 	} catch (err) {
 		var e = new Error();
-    	const st = e.stack;
+		const st = e.stack;
 
 		console.log("Error getting page props", params, err)
 
