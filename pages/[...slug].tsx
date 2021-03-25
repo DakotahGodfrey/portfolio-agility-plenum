@@ -23,7 +23,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 	const traverse = (rootPath, depth) => {
 
-		if (depth > 3) return
+		if (depth > 4) return
 
 		if (!existsSync(rootPath)) {
 			console.log(`${rootPath} does not exist`)
@@ -65,7 +65,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		const root = path.resolve(process.cwd(), "cache")
+		const root = path.resolve(process.cwd())
 
 		traverse(root, 0)
 
