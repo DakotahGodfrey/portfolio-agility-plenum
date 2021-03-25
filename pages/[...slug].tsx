@@ -34,14 +34,19 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		console.log("Folder", process.cwd())
 
-		if (existsSync(`${process.cwd()}/src`)) {
+		if (existsSync(`${process.cwd()}`)) {
 			//check for a src folder...
-			const listing = readdirSync(`${process.cwd()}/src`)
+			const listing = readdirSync(`${process.cwd()}`)
 
 			//listing all files using forEach
 			listing.forEach(function (path) {
 				// Do whatever you want to do with the file
-				console.log({path});
+				console.log(path);
+
+				const listing2 = readdirSync(`${process.cwd()}`)
+				listing2.forEach(path2 => {
+					console.log(path2);
+				})
 			});
 		}
 
