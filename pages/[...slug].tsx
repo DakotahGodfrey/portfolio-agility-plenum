@@ -14,6 +14,7 @@ import GlobalHeader from "components/common/GlobalHeader"
 import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
 
+import fs from "fs"
 import { unlinkSync, existsSync, readdirSync } from "fs"
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
@@ -36,17 +37,20 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		if (existsSync(`${process.cwd()}`)) {
 			//check for a src folder...
-			const listing = readdirSync(`${process.cwd()}`)
+			const listing = readdirSync(`${process.cwd()}`, { withFileTypes: true})
 
 			//listing all files using forEach
 			listing.forEach(function (path) {
 				// Do whatever you want to do with the file
-				console.log(path);
 
-				const listing2 = readdirSync(`${process.cwd()}`)
-				listing2.forEach(path2 => {
-					console.log(path2);
-				})
+				console.log(`* ${path.name}`);
+
+				if (path.isDirectory()) {
+					const listing2 = readdirSync(path.name)
+					listing2.forEach(path2 => {
+						console.log(`  - ${path2}`);
+					})
+				}
 			});
 		}
 
