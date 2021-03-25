@@ -63,25 +63,9 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-const root = path.resolve(process.cwd(), ".next/cache/agility")
+		const root = path.resolve(process.cwd(), "cache")
 
 		traverse(root, 0)
-
-		//determine if we've already done a full build yet
-		const buildFilePath = `${process.cwd()}/src/.next/cache/agility/build.log`
-
-		if (existsSync(`${process.cwd()}/src/.next`)) {
-			console.log("The next cache is here", `${process.cwd()}/src/.next`)
-		}
-
-		if (existsSync(`./src/.next`)) {
-			console.log("The next cache is here (2)", `./src/.next`)
-		}
-
-		if (existsSync(buildFilePath)) {
-			console.log("REMOVING BUILD FILE PATH")
-			unlinkSync(buildFilePath)
-		}
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 
