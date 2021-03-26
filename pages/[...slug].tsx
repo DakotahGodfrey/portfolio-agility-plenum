@@ -33,9 +33,12 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		console.log("getStaticProps", { preview, params })
-
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+
+		if (preview === true) {
+			console.log("PREVIEW MODE", agilityProps)
+		}
+
 
 		let rebuildFrequency = 120
 
