@@ -67,7 +67,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		const root = path.resolve(process.cwd())
 
-		traverse(root, 0)
+		//traverse(root, 0)
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 
