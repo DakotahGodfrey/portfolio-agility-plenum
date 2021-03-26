@@ -26,11 +26,10 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 			"footer": GlobalFooter
 		}
 
-
-		if (params === undefined) params = null
-		if (preview === undefined) preview = false
-		if (locale === undefined) locale = null
-		if (defaultLocale === undefined) defaultLocale = null
+		// if (params === undefined) params = null
+		// if (preview === undefined) preview = false
+		// if (locale === undefined) locale = null
+		// if (defaultLocale === undefined) defaultLocale = null
 
 		console.log("getStaticProps", { preview, params })
 
