@@ -25,13 +25,13 @@ export default async (req, res) => {
 		}
 	}
 
-	console.log("redirecting to ", previewUrl)
+	console.log("redirecting to ", `${previewUrl}?p=1`)
 
 	//enable preview mode
 	res.setPreviewData({ preview: 1 })
 
 	// Redirect to the slug
-	res.redirect(previewUrl)
+	res.redirect(`${previewUrl}?p=1`)
 	res.end()
 
 }
