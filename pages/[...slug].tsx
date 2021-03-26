@@ -31,7 +31,9 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (preview === undefined) preview = false
 		if (locale === undefined) locale = null
 		if (defaultLocale === undefined) defaultLocale = null
-		if (defaultLocale === undefined) defaultLocale = null
+
+		console.log("getStaticProps", { preview, params })
+
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 
