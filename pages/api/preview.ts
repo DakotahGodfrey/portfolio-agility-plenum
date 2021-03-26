@@ -25,6 +25,8 @@ export default async (req, res) => {
 		}
 	}
 
+	console.log("redirecting to ", previewUrl)
+
 	//enable preview mode
 	res.setPreviewData({})
 
