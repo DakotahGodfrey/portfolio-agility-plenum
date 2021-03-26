@@ -20,43 +20,11 @@ import path from "path"
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
-
-	const traverse = (rootPath, depth) => {
-
-		if (depth > 4) return
-
-		if (!existsSync(rootPath)) {
-			console.log(`${rootPath} does not exist`)
-			return
-		}
-
-		try {
-			const listing = readdirSync(rootPath, { withFileTypes: true })
-
-			let indent = " "
-			for (let i = 0; i < depth; i++) indent += " "
-
-			//listing all files using forEach
-			listing.forEach(sub => {
-
-				if (sub.isDirectory()) {
-					console.log(`${indent} * ${sub.name}`);
-					traverse(path.resolve(rootPath, sub.name), depth + 1)
-				} else {
-					console.log(`${indent} - ${sub.name}`);
-				}
-			})
-		} catch (e) {
-			return
-		}
-	}
-
 	try {
 		const globalComponents = {
 			"header": GlobalHeader,
 			"footer": GlobalFooter
 		}
-
 
 
 		if (params === undefined) params = null
@@ -65,13 +33,11 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		if (defaultLocale === undefined) defaultLocale = null
 		if (defaultLocale === undefined) defaultLocale = null
 
-		const root = path.resolve(process.cwd())
-
-		//traverse(root, 0)
+		console.log("getStaticProps", { preview, params })
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 
-		let rebuildFrequency = 10
+		let rebuildFrequency = 120
 
 		if (!agilityProps) {
 			// We throw to make sure this fails at build time as this is never expected to happen
