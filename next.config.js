@@ -1,6 +1,6 @@
 module.exports = {
 	target: "serverless",
-	functions: {
+	unstableNetlifyFunctionsSupport: {
 		'pages/[...slug].tsx': {
 			includeDirs: ['./.next/cache/agility']
 		},
