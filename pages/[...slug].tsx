@@ -31,10 +31,11 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		// if (locale === undefined) locale = null
 		// if (defaultLocale === undefined) defaultLocale = null
 
-		console.log("getStaticProps", { preview, params })
+
 
 
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+	//console.log("getStaticProps", { preview, params, agilityProps })
 
 		let rebuildFrequency = 120
 
@@ -75,11 +76,10 @@ export async function getStaticPaths({ locales, defaultLocale }: GetStaticPathsC
 
 
 const AgilityPage = (props: any) => {
+
 	if (handlePreview()) {
 		return <LoadingWidget message="Activating preview mode..." />
 	}
-
-
 
 	return <Layout {...props} />;
 }
