@@ -1,7 +1,7 @@
 module.exports = {
 	target: "serverless",
 	future: {
-		webpack5: true,
+		webpack5: false,
 	},
 	unstableNetlifyFunctionsSupport: {
 		'pages/[...slug].tsx': {
