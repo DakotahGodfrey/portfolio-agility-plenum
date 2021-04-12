@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@agility/content-sync": "^1.0.1",
-    "@netlify/plugin-nextjs": "git://github.com/netlify/netlify-plugin-nextjs.git#unstable-functions-support",
     "framer-motion": "^4.0.0",
     "next": "^10.0.7",
     "react": "17.0.1",
