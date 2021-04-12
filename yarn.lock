@@ -19,10 +19,9 @@
     dotenv "^8.2.0"
     proper-lockfile "^4.1.2"
 
-"@agility/nextjs@^0.1.8":
+"@agility/nextjs@git://github.com/agility/agility-next#agility-image":
   version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@agility/nextjs/-/nextjs-0.1.8.tgz#cdbea123bfbc76eb2b75487354195280f6221375"
-  integrity sha512-g2CgZi5CvQXs3Q9MGBDTHxcKlLDUsn0deIlkP5jeAXsR8U3TsuE0Nxdkc1LUtHl3frW5mOeAiFFdvNqhfQyNmw==
+  resolved "git://github.com/agility/agility-next#9ec10d3d143a94b332a54cb2c8b5e1c315d73097"
 
 "@aws-crypto/crc32@^1.0.0":
   version "1.0.0"

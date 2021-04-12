@@ -20,7 +20,7 @@ const vercelConfig = {
 }
 
 if (process.env.NETLIFY != true) {
-console.log("using vercel config...")
+console.log(`using vercel config... (process.env.NETLIFY=${process.env.NETLIFY})`)
 	module.exports = vercelConfig
 } else {
 	module.exports = netlifyConfig
