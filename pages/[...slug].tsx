@@ -37,7 +37,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
 	//console.log("getStaticProps", { preview, params, agilityProps })
 
-		let rebuildFrequency = 120
+		let rebuildFrequency = 10
 
 		if (!agilityProps) {
 			// We throw to make sure this fails at build time as this is never expected to happen
