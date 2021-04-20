@@ -18,7 +18,43 @@ import { unlinkSync, existsSync, readdirSync } from "fs"
 import path from "path"
 
 
+
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
+
+
+const traverse = (rootPath, depth) => {
+
+	if (depth > 1) return
+
+	if (!existsSync(rootPath)) {
+		console.log(`${rootPath} does not exist`)
+		return
+	}
+
+	try {
+		const listing = readdirSync(rootPath, { withFileTypes: true })
+
+		let indent = " "
+		for (let i = 0; i < depth; i++) indent += " "
+
+		//listing all files using forEach
+		listing.forEach(sub => {
+
+			if (sub.isDirectory()) {
+				console.log(`${indent} * ${sub.name}`);
+				traverse(path.resolve(rootPath, sub.name), depth + 1)
+			} else {
+				console.log(`${indent} - ${sub.name}`);
+			}
+		})
+	} catch (e) {
+		return
+	}
+}
+
+	const root = path.resolve(process.cwd())
+
+	traverse(root, 0)
 
 	try {
 		const globalComponents = {
