@@ -31,6 +31,8 @@ const traverse = (rootPath, depth) => {
 		return
 	}
 
+	console.log(`*** Level: ${depth} - ${rootPath} ***`)
+
 	try {
 		const listing = readdirSync(rootPath, { withFileTypes: true })
 
@@ -52,7 +54,7 @@ const traverse = (rootPath, depth) => {
 	}
 }
 
-	const root = path.resolve(process.cwd())
+	const root = path.resolve("./")
 
 	traverse(root, 0)
 
