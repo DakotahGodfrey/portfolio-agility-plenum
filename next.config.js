@@ -7,6 +7,7 @@ module.exports = {
 		'pages/[...slug].tsx': {
 			includeDirs: ['agility']
 		},
+
 		'pages/index.tsx': {
 			includeDirs: ['agility']
 		}
