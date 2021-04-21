@@ -58,7 +58,7 @@ const traverse = (rootPath, depth) => {
 	const testPath = path.join(process.cwd(),  "agility")
 
 	console.log("Traverse: ", testPath)
-	console.log("VERCEL:", process.env.VERCEL, "NETLIFY:", process.env.DEPLOY_PRIME_URL)
+	console.log("ENV:", process.env)
 
 	traverse(testPath, 0)
 
