@@ -14,32 +14,61 @@ import GlobalHeader from "components/common/GlobalHeader"
 import GlobalFooter from "components/common/GlobalFooter"
 import LoadingWidget from "components/common/LoadingWidget"
 
+import { unlinkSync, existsSync, readdirSync } from "fs"
+import path from "path"
+
+
+
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
-	const globalComponents = {
-		"header": GlobalHeader,
-		"footer": GlobalFooter
-	}
+	try {
 
-	const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+		const testPath = path.join(process.cwd(),  ".next/cache/agility")
+		console.log("Cache Path: ", testPath, existsSync(testPath) ? "exists" : "doesn't exist")
 
-	let rebuildFrequency = 10
+		const globalComponents = {
+			"header": GlobalHeader,
+			"footer": GlobalFooter
+		}
 
-	if (!agilityProps) {
-		// We throw to make sure this fails at build time as this is never expected to happen
-		throw new Error(`Page not found`)
-	}
+		// if (params === undefined) params = null
+		// if (preview === undefined) preview = false
+		// if (locale === undefined) locale = null
+		// if (defaultLocale === undefined) defaultLocale = null
 
-	return {
-		props: agilityProps,
-		revalidate: rebuildFrequency
+		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+
+
+		let rebuildFrequency = 10
+
+		if (!agilityProps) {
+			// We throw to make sure this fails at build time as this is never expected to happen
+			throw new Error(`Page not found`)
+		}
+
+		return {
+			props: agilityProps,
+			revalidate: rebuildFrequency
+		}
+	} catch (err) {
+		var e = new Error();
+		const st = e.stack;
+
+		console.log("Error getting page props", params, err)
+
+		return {
+			props: {
+				error: `Params: ${params}, Error: ${err}, Stack: ${st}`,
+				revalidate: 1000
+			}
+		}
 	}
 }
 
 export async function getStaticPaths({ locales, defaultLocale }: GetStaticPathsContext) {
 
 	//get the paths configured in agility
-	let agilityPaths = await getAgilityPaths({ preview:false, locales, defaultLocale })
+	let agilityPaths = await getAgilityPaths({ preview: false, locales, defaultLocale })
 
 	return {
 		paths: agilityPaths,
@@ -47,9 +76,11 @@ export async function getStaticPaths({ locales, defaultLocale }: GetStaticPathsC
 	}
 }
 
-const AgilityPage = (props:any) => {
+
+const AgilityPage = (props: any) => {
+
 	if (handlePreview()) {
-		return <LoadingWidget message="Activating preview mode..."/>
+		return <LoadingWidget message="Activating preview mode..." />
 	}
 
 	return <Layout {...props} />;
