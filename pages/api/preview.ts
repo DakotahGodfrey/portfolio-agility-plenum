@@ -29,7 +29,7 @@ export default async (req, res) => {
 	res.setPreviewData({})
 
 	// Redirect to the slug
-	res.writeHead(307, { Location: previewUrl })
+	res.redirect(`${previewUrl}?p=1`)
 	res.end()
 
 }

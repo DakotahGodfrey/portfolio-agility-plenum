@@ -14,13 +14,15 @@
     "cms-clean": "agility-next clean"
   },
   "dependencies": {
-    "@agility/content-sync": "^0.1.24",
-    "next": "^10.0.9",
+    "@agility/content-sync": "^1.0.1",
+    "@netlify/plugin-nextjs": "^3.1.0",
+    "framer-motion": "^4.0.0",
+    "next": "^10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
-    "@agility/nextjs": "^0.1.4",
+    "@agility/nextjs": "0.2.0-rc8",
     "@tailwindcss/jit": "^0.1.1",
     "@tailwindcss/typography": "^0.4.0",
     "@types/node": "^14.14.35",

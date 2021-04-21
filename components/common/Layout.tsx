@@ -9,12 +9,17 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head'
 
+
 import Error from 'next/error'
 
 
 function Layout(props) {
 
-	const { page, sitemapNode, dynamicPageItem, notFound, pageTemplateName } = props
+	const { page, sitemapNode, dynamicPageItem, notFound, pageTemplateName, error } = props
+
+	if (error) {
+		return <div>{error}</div>
+	}
 
 	// If the page is not yet generated, this will be displayed
 	// initially until getStaticProps() finishes running
@@ -39,6 +44,7 @@ function Layout(props) {
 	return (
 		<>
 			<Head>
+				<html lang={"en-us"}/>
 				<title>{sitemapNode?.title} - Agility CMS Sample Blog</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content={page.seo.metaDescription} />
@@ -49,13 +55,14 @@ function Layout(props) {
 				}
 
 			</Head>
-			<PreviewBar {...props} />
 
-			<main>
-				<GlobalHeader {...props} />
-				<AgilityPageTemplate {...props} />
-				<GlobalFooter {...props} />
-			</main>
+				<PreviewBar {...props} />
+
+				<main>
+					<GlobalHeader {...props} />
+					<AgilityPageTemplate {...props} />
+					<GlobalFooter {...props} />
+				</main>
 
 		</>
 	)
