@@ -22,12 +22,22 @@ import path from "path"
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
 	try {
+
+		const testPath = path.join(process.cwd(),  ".next/cache/agility")
+		console.log("Cache Path: ", testPath, existsSync(testPath) ? "exists" : "doesn't exist")
+
 		const globalComponents = {
 			"header": GlobalHeader,
 			"footer": GlobalFooter
 		}
 
+		// if (params === undefined) params = null
+		// if (preview === undefined) preview = false
+		// if (locale === undefined) locale = null
+		// if (defaultLocale === undefined) defaultLocale = null
+
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
+
 
 		let rebuildFrequency = 10
 
