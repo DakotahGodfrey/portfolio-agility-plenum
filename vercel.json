@@ -1,0 +1,10 @@
+{
+	"functions": {
+		"pages/[...slug].tsx": {
+			"includeFiles": ".next/cache/agility/**"
+		},
+		"pages/index.tsx": {
+			"includeDirs": ".next/cache/agility/**"
+		}
+	}
+  }
