@@ -5,7 +5,7 @@
 		},
 
 		"pages/index.tsx": {
-			"includeDirs": ".next/cache/agility/**"
+			"includeFiles": ".next/cache/agility/**"
 		}
 	}
   }
