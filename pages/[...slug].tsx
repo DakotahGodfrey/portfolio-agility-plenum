@@ -21,13 +21,44 @@ import path from "path"
 
 export async function getStaticProps({ preview, params, locale, defaultLocale, locales }: GetStaticPropsContext<{ slug: string[] }>) {
 
-	const testPath = path.join(process.cwd(),  "agility/test1.json")
 
-	if (! existsSync(testPath)) {
-		console.log(`${testPath} does NOT exist`)
-	} else {
-		console.log(`${testPath} exists`)
+
+const traverse = (rootPath, depth) => {
+
+	if (depth > 0) return
+
+	if (!existsSync(rootPath)) {
+		console.log(`${rootPath} does not exist`)
+		return
 	}
+
+	try {
+		const listing = readdirSync(rootPath, { withFileTypes: true })
+
+		let indent = " "
+		for (let i = 0; i < depth; i++) indent += " "
+
+		//listing all files using forEach
+		listing.forEach(sub => {
+
+			if (sub.isDirectory()) {
+				console.log(`${indent} * ${sub.name}`);
+				traverse(path.resolve(rootPath, sub.name), depth + 1)
+			} else {
+				console.log(`${indent} - ${sub.name}`);
+			}
+		})
+	} catch (e) {
+		return
+	}
+}
+
+
+	const testPath = path.join(process.cwd(),  "agility")
+
+	console.log("Traverse: ", testPath)
+
+	traverse(testPath, 0)
 
 
 	try {
@@ -41,11 +72,8 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		// if (locale === undefined) locale = null
 		// if (defaultLocale === undefined) defaultLocale = null
 
-
-
-
 		const agilityProps = await getAgilityPageProps({ preview, params, locale, getModule, defaultLocale, globalComponents });
-	//console.log("getStaticProps", { preview, params, agilityProps })
+
 
 		let rebuildFrequency = 10
 
