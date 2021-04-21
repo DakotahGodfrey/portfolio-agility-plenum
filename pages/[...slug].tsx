@@ -48,6 +48,7 @@ const traverse = (rootPath, depth) => {
 				console.log(`${indent} - ${sub.name}`);
 			}
 		})
+
 	} catch (e) {
 		return
 	}
