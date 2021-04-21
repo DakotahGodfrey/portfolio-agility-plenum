@@ -1,11 +1,11 @@
 {
 	"functions": {
 		"pages/[...slug].tsx": {
-			"includeFiles": "agility/**"
+			"includeFiles": ".next/cache/agility/**"
 		},
 
 		"pages/index.tsx": {
-			"includeFiles": "agility/**"
+			"includeFiles": ".next/cache/agility/**"
 		}
 	}
   }

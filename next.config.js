@@ -5,11 +5,11 @@ module.exports = {
 	},
 	unstableNetlifyFunctionsSupport: {
 		'pages/[...slug].tsx': {
-			includeDirs: ['agility']
+			includeDirs: ['.next/cache/agility']
 		},
 
 		'pages/index.tsx': {
-			includeDirs: ['agility']
+			includeDirs: ['.next/cache/agility']
 		}
 	}
 }
