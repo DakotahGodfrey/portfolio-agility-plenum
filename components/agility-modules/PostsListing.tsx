@@ -34,7 +34,7 @@ const PostListing: ModuleWithInit<IPostListing, CustomData> = ({ module, customD
 	return (
 		<section className="my-12 bg-white">
 			<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-				<Parallax>
+
 					<div className="lg:text-center">
 						<p className="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">
 							{fields.preHeader}
@@ -46,13 +46,13 @@ const PostListing: ModuleWithInit<IPostListing, CustomData> = ({ module, customD
 							{fields.subtitle}
 						</p>
 					</div>
-				</Parallax>
+
 				<div className="mt-10">
 					<ul className="md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
 						{customData.posts.map(post => {
 							return (
 								<li key={`post-${post.contentID}`}>
-									<Parallax>
+
 									<Link href={href} as={post.url}>
 										<a className="flex" >
 											<div className="flex-shrink-0">
@@ -87,7 +87,7 @@ const PostListing: ModuleWithInit<IPostListing, CustomData> = ({ module, customD
 											</div>
 										</a>
 									</Link>
-									</Parallax>
+
 								</li>
 							)
 						})}

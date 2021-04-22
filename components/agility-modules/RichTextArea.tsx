@@ -10,11 +10,8 @@ interface RichText {
 const RichTextArea:Module<RichText> =  ({ module: {fields: {textblob}} }) => {
 
 	return (
-		<Parallax>
 		<section className="my-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-full" dangerouslySetInnerHTML={renderHTML(textblob)}>
 		</section>
-		</Parallax>
-
 
 	);
 
