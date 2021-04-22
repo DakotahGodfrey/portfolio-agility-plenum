@@ -11,6 +11,7 @@ import Head from 'next/head'
 
 
 import Error from 'next/error'
+import React from "react"
 
 
 function Layout(props) {
@@ -44,7 +45,6 @@ function Layout(props) {
 	return (
 		<>
 			<Head>
-				<html lang={"en-us"}/>
 				<title>{sitemapNode?.title} - Agility CMS Sample Blog</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content={page.seo.metaDescription} />
@@ -63,6 +63,7 @@ function Layout(props) {
 					<AgilityPageTemplate {...props} />
 					<GlobalFooter {...props} />
 				</main>
+
 
 		</>
 	)

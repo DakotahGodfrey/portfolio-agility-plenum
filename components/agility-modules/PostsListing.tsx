@@ -2,8 +2,6 @@ import React from 'react';
 import { ModuleWithInit, renderHTML } from '@agility/nextjs'
 import truncate from 'truncate-html'
 import Link from 'next/link';
-import { motion } from "framer-motion"
-import Parallax from 'components/common/Parallax';
 
 interface IPostListing {
 	title: string,
@@ -59,25 +57,25 @@ const PostListing: ModuleWithInit<IPostListing, CustomData> = ({ module, customD
 
 
 												{post.imageSrc &&
-													<motion.div className="flex items-center justify-center  rounded-md bg-indigo-500 text-white" layoutId={`postimg-${post.contentID}`}>
+													<div className="flex items-center justify-center  rounded-md bg-indigo-500 text-white" >
 														<img className="h-20 w-20 rounded-md" src={`${post.imageSrc}?w=100&h=100`} alt={post.imageAlt} loading="lazy" />
-													</motion.div>
+													</div>
 												}
 
 
 											</div>
 											<div className="ml-4">
-												<motion.h4 className="text-lg leading-6 font-medium text-gray-900" layoutId={`posttitle-${post.contentID}`}>
+												<h4 className="text-lg leading-6 font-medium text-gray-900" >
 													{post.title}
-												</motion.h4>
+												</h4>
 
 												<div>
 													<div className="inline-block" >
-														<motion.div layoutId={`postcategory-${post.contentID}`}>{post.category}</motion.div>
+														<div >{post.category}</div>
 													</div>
-													<motion.div className="ml-2 inline-block" layoutId={`postauthor-${post.contentID}`}>{post.author}</motion.div>
+													<div className="ml-2 inline-block" >{post.author}</div>
 
-													<motion.div className="ml-2 inline-block" layoutId={`postdate-${post.contentID}`}>{post.dateStr}</motion.div>
+													<div className="ml-2 inline-block" >{post.dateStr}</div>
 
 												</div>
 												<p className="mt-2 text-base leading-6 text-gray-500">
