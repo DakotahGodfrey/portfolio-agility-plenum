@@ -45,7 +45,6 @@ function Layout(props) {
 	return (
 		<>
 			<Head>
-				<html lang={"en-us"}/>
 				<title>{sitemapNode?.title} - Agility CMS Sample Blog</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content={page.seo.metaDescription} />
