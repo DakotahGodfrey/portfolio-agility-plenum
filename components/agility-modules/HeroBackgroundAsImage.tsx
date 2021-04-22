@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { AgilityImage, ImageField, Module, URLField } from '@agility/nextjs'
-import Parallax from 'components/common/Parallax';
 
 interface IHero {
 	title: string,

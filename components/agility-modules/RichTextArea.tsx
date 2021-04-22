@@ -1,7 +1,5 @@
 import React, {FC} from 'react';
 import { renderHTML, Module } from '@agility/nextjs'
-import { motion } from "framer-motion"
-import Parallax from 'components/common/Parallax';
 
 interface RichText {
 	textblob:string,

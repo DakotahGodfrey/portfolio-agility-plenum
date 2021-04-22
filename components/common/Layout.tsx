@@ -11,6 +11,7 @@ import Head from 'next/head'
 
 
 import Error from 'next/error'
+import React from "react"
 
 
 function Layout(props) {
@@ -63,6 +64,7 @@ function Layout(props) {
 					<AgilityPageTemplate {...props} />
 					<GlobalFooter {...props} />
 				</main>
+
 
 		</>
 	)
