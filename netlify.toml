@@ -1,7 +1,2 @@
-[build]
-  command   = "yarn build"
-  publish = "out_publish"
-  functions = "out_functions"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[functions]
+included_files = [".next/cache/agility/*.md"]
