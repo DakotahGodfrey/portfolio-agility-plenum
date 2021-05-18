@@ -1,2 +1,7 @@
+[build]
+  command   = "yarn build"
+  publish = "out_publish"
+  functions = "out_functions"
+
 [functions]
 included_files = [".next/cache/agility/*.md"]
