@@ -72,7 +72,7 @@ export async function getStaticPaths({ locales, defaultLocale }: GetStaticPathsC
 
 	return {
 		paths: agilityPaths,
-		fallback: true,
+		fallback: "blocking",
 	}
 }
 
