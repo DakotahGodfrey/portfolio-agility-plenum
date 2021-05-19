@@ -48,7 +48,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 
 		return {
 			props: agilityProps,
-			//HACK revalidate: rebuildFrequency
+			revalidate: rebuildFrequency
 		}
 	} catch (err) {
 		var e = new Error();
@@ -59,7 +59,7 @@ export async function getStaticProps({ preview, params, locale, defaultLocale, l
 		return {
 			props: {
 				error: `Params: ${params}, Error: ${err}, Stack: ${st}`,
-				//HACK revalidate: 1000
+				revalidate: 1000
 			}
 		}
 	}
