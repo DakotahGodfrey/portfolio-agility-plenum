@@ -4,4 +4,4 @@
   functions = "out_functions"
 
 [functions]
-included_files = [".next/cache/agility/*.json"]
+  included_files = [".next/cache/agility/*.json"]
